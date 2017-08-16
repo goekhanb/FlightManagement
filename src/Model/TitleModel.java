@@ -1,8 +1,6 @@
 package Model;
 
 import Database.DatabaseManager;
-
-import javax.swing.table.TableModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
