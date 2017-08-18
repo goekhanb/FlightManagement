@@ -122,15 +122,15 @@ public class LoginView extends JFrame implements ActionListener,Observer {
                     "Failure Notification",JOptionPane.WARNING_MESSAGE);
             System.err.println("Kein Username / Passwort ; beides leere Inhalte!");
         }
-        else
+
         {
-            if(loginM.checkLogin2(userlogv))
-            {
+           if(loginM.checkLogin2(userlogv))
+           {
                 overview = new Overview();
                 overview.addObserver(this);
                 overview.openWindow();
                 this.dispose();
-            }
+           }
             else
             {
                 JOptionPane.showMessageDialog(null,"Login failed ! Username or password is not correct.",

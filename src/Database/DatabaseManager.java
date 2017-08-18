@@ -2,7 +2,6 @@ package Database;
 
 import Model.FlightCustomer;
 import Model.Login;
-import Model.Title;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ public class DatabaseManager {
 
     private final static String dbserver = "localhost";
     private final static int dbport = 3306;
-    private final static String dbname = "customerproject";
+    private final static String dbname = "travelagency";
     private final static String dbuser = "root";
     private final static String dbpass = "root";
     private final static String url = "jdbc:mysql://" + dbserver + ":" + dbport + "/" + dbname + "?useSSL=false";
@@ -48,15 +47,13 @@ public class DatabaseManager {
 
     public ArrayList<Login> getAllLoginUser() throws SQLException {
         ArrayList<Login> loginArrayList = new ArrayList<>();
-        query = "select * from flightcustomer";
+        query = "select * from travelagency.login";
         ResultSet resultSet = ausfuehren(query);
         while (resultSet.next()){
 
             String passport_number = resultSet.getString(1);
             String name = resultSet.getString(2);
-            String gender = resultSet.getString(3);
-            String nationality = resultSet.getString(4);
-            loginArrayList.add(new Login(passport_number,name,gender,nationality));
+            loginArrayList.add(new Login(name,passport_number));
 
         }
         return loginArrayList;
@@ -106,29 +103,6 @@ public class DatabaseManager {
                 ausfuehren(pstm.toString());
     }
 
-    public int searchTitleID(String name) throws SQLException {
-        int passport_number =0;
-        query="select passport_number from flightcustomer.name where name = ? ";
-        PreparedStatement pstm = con.prepareStatement(query);
-        pstm.setString(1,name);
-        ResultSet resultSet = ausfuehren(pstm.toString());
-        while (resultSet.next()){
-            passport_number =resultSet.getInt(1);
-        }
-        return passport_number;
-    }
-
-    public ArrayList<Title> getTitles() throws SQLException {
-        ArrayList<Title> titles = new ArrayList<>();
-        query="select * from customerproject.title";
-        ResultSet resultSet = ausfuehren(query);
-        while (resultSet.next()){
-            int id = resultSet.getInt(1);
-            String titles_ = resultSet.getString(2);
-            titles.add(new Title(id,titles_));
-        }
-        return titles;
-    }
 
     public int getEmployeeMax() throws SQLException
     {

@@ -3,8 +3,6 @@ package View;
 import Database.DatabaseManager;
 import Model.FlightCustomer;
 import Model.CustomerModel;
-import Model.Title;
-import Model.TitleModel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -39,7 +37,6 @@ public class EditCustomerView extends Observable implements ActionListener {
     private JLabel lblNet;
     private JButton btnAddEmployee;
     private JButton btnCancel;
-    private TitleModel titelM = new TitleModel();
     private CustomerModel customerM;
     private FlightCustomer newcustomer;
     private int index;
@@ -118,13 +115,8 @@ public class EditCustomerView extends Observable implements ActionListener {
         {
             e.printStackTrace();
         }
-        try {
-            titelM.loadTitles();
-        } catch (SQLException e) {
-            e.getErrorCode();
-        }
+
         setzeAlleActionListener(this);
-        fillComboBox();
         setFields();
         //felder deaktivieren
         txtId.setEnabled(false);
@@ -137,14 +129,6 @@ public class EditCustomerView extends Observable implements ActionListener {
         btnCancel.addActionListener(l);
     }
 
-    public void fillComboBox()
-    {
-        ArrayList<Title> titelList = titelM.returnList();
-        for(int i=0;i<titelList.size();i++)
-        {
-            cbxTitel.addItem(titelList.get(i).getTitles());
-        }
-    }
     public void setFields()
     {
         txtId.setText(Integer.toString(customerM.getCustomerPassportNumber(index)));

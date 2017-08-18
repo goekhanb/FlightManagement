@@ -3,8 +3,6 @@ package View;
 import Database.DatabaseManager;
 import Model.FlightCustomer;
 import Model.CustomerModel;
-import Model.Title;
-import Model.TitleModel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -37,7 +35,6 @@ public class AddCustomerView extends Observable implements ActionListener {
 
     private int id;
 
-    private TitleModel titelM = new TitleModel();
     private FlightCustomer newemployee;
     private CustomerModel customerM;
 
@@ -86,15 +83,10 @@ public class AddCustomerView extends Observable implements ActionListener {
         {
             e.printStackTrace();
         }
-        try {
-            titelM.loadTitles();
-        } catch (SQLException e) {
-            e.getErrorCode();
-        }
+
         setzeAlleActionListener(this);
         setIDField();
         //felder deaktivieren
-        fillComboBox();
         txtId.setEnabled(false);
         txtName.setEnabled(false);
         frmAddEmployee.setVisible(true);
@@ -106,14 +98,6 @@ public class AddCustomerView extends Observable implements ActionListener {
         btnCancel.addActionListener(l);
     }
 
-    public void fillComboBox()
-    {
-        ArrayList<Title> titelList = titelM.returnList();
-        for(int i=0;i<titelList.size();i++)
-        {
-            cbxTitel.addItem(titelList.get(i).getTitles());
-        }
-    }
     public void setIDField()
     {
         try
