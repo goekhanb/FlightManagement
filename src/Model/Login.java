@@ -9,41 +9,41 @@ public class Login {
     @Attribute der Tabelle Login in der Datenbank
      */
 
-    private int idLogin;
-    private String username;
-    private String password;
-    private String emailadress;
+    private String passport_number;
+    private String name;
+    private String gender   ;
+    private String nationality;
 
-    public Login(int id, String username,String password,String emailadress){
-        this.idLogin=id;
-        this.username=username;
-        this.password=password;
-        this.emailadress=emailadress;
+    public Login(String id, String username,String password,String emailadress){
+        this.passport_number=id;
+        this.name=username;
+        this.gender=password;
+        this.nationality=emailadress;
     }
 
     public Login(){}
 
-    public Login(String username,String password){
+    public Login(String passport_number,String name){
         super();
-        this.username=username;
-        this.password=password;
+        this.passport_number=passport_number;
+        this.name=name;
     }
 
     //id setter - getter
-    public int getIdLogin(){return idLogin;}
-    public void setIdLogin(int idLogin){this.idLogin=idLogin;}
+    public String getPassport_number(){return passport_number;}
+    public void setPassport_number(String passport_number){this.passport_number=passport_number;}
 
     //Username setter - getter
-    public String getUsername(){return username;}
-    public void setUsername(String username){this.username=username;}
+    public String getName(){return name;}
+    public void setUsername(String name){this.name=name;}
 
     //Password setter - getter
-    public String getPassword(){return password;}
-    public void setPassword(String password){this.password=password;}
+    public String getGender(){return gender;}
+    public void setGender(String gender){this.gender=gender;}
 
     //Username setter - getter
-    public String getEmailadress(){return emailadress;}
-    public void setEmailadress(String emailadress){this.emailadress=emailadress;}
+    public String getNationality(){return nationality;}
+    public void setNationality(String nationality){this.nationality=nationality;}
 
 
 }

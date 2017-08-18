@@ -21,7 +21,7 @@ public class LoginModel {
         int i = 0;
 
         while (arrayListLogin.size() > 1) {
-            if (user.getUsername().equals(arrayListLogin.get(i).getUsername()) && user.getPassword().equals(arrayListLogin.get(i).getPassword())) {
+            if (user.getPassport_number().equals(arrayListLogin.get(i).getPassport_number()) && user.getName().equals(arrayListLogin.get(i).getName())) {
                 return true;
             }
             i++;

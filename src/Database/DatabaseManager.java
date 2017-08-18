@@ -48,15 +48,15 @@ public class DatabaseManager {
 
     public ArrayList<Login> getAllLoginUser() throws SQLException {
         ArrayList<Login> loginArrayList = new ArrayList<>();
-        query = "select * from customerproject.login";
+        query = "select * from flightcustomer";
         ResultSet resultSet = ausfuehren(query);
         while (resultSet.next()){
 
-            int loginID = resultSet.getInt(1);
-            String username = resultSet.getString(2);
-            String password = resultSet.getString(3);
-            String email = resultSet.getString(4);
-            loginArrayList.add(new Login(loginID,username,password,email));
+            String passport_number = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String gender = resultSet.getString(3);
+            String nationality = resultSet.getString(4);
+            loginArrayList.add(new Login(passport_number,name,gender,nationality));
 
         }
         return loginArrayList;
